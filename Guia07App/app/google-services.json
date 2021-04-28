@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "213954626828",
+    "project_id": "loginfirebaseapp-3ee4d",
+    "storage_bucket": "loginfirebaseapp-3ee4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213954626828:android:63c18c18d96b293ddc3529",
+        "android_client_info": {
+          "package_name": "sv.edu.udb.guia07app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213954626828-o2224cfbl7qqvsplh4v5f3h7ui2rts8g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOt_qPBgzysJnNOneQHUR-HvfK8IzyXUQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213954626828-o2224cfbl7qqvsplh4v5f3h7ui2rts8g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
