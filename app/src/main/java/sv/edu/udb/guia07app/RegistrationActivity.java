@@ -1,5 +1,6 @@
 package sv.edu.udb.guia07app;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
@@ -21,7 +22,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private EditText emailTV, passwordTV;
     private Button regBtn;
-    private ProgressBar progressBar;
+    private ProgressDialog progressBar;
 
     private FirebaseAuth mAuth;
     @Override
@@ -30,7 +31,7 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         mAuth = FirebaseAuth.getInstance();
-
+        progressBar = new ProgressDialog(this);
         initializeUI();
 
         regBtn.setOnClickListener(new View.OnClickListener() {
@@ -42,8 +43,6 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void registerNewUser() {
-        progressBar.setVisibility(View.VISIBLE);
-
         String email, password;
         email = emailTV.getText().toString();
         password = passwordTV.getText().toString();
@@ -57,21 +56,24 @@ public class RegistrationActivity extends AppCompatActivity {
             return;
         }
 
+        progressBar.setMessage("Realizando el registro...");
+        progressBar.show();
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
-                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(getApplicationContext(), "Registro Completado!", Toast.LENGTH_LONG).show();
 
                             Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                             startActivity(intent);
                         }
                         else {
-                            Toast.makeText(getApplicationContext(), "Registration failed! Please try again later", Toast.LENGTH_LONG).show();
-                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(getApplicationContext(), "No se pudo registrar el usuario", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Ingrese correo valido y contraseña", Toast.LENGTH_LONG).show();
                         }
+                        progressBar.dismiss();
                     }
                 });
     }
@@ -80,6 +82,5 @@ public class RegistrationActivity extends AppCompatActivity {
         emailTV = findViewById(R.id.email);
         passwordTV = findViewById(R.id.password);
         regBtn = findViewById(R.id.register);
-        progressBar = findViewById(R.id.progressBar);
     }
 }
