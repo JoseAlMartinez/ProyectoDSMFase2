@@ -14,4 +14,11 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="hamburguerleyend">Elige entre nuestra gran variedad de hamburguesas, desde la mas
+    pequeña hasta la triple carne, sabemosos que tomaras una gran desicion.</string>
+    <string name="pizzaleyenda">Disfruta de una gran variedad de sabores en familia o con amigos,
+    elige la pizza que mas te haga agua la boca, prueba todos nuestros quesos  con tus ingredientes
+    prefeirdos</string>
+    <string name="postres">Explosion de sabores para acompañar con tu platillo preferido,
+        desde la clásica tarta de galletas, a vasitos de frutas con un toque diferente, un pastel de queso o el típico flan casero</string>
 </resources>

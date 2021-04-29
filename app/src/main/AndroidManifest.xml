@@ -21,6 +21,10 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".ShopActivity"></activity>
+        <activity android:name=".HamburguesasActivity"></activity>
+        <activity android:name=".PizzaActivity"></activity>
+        <activity android:name=".PostresActivity"></activity>
+
     </application>
 
 </manifest>

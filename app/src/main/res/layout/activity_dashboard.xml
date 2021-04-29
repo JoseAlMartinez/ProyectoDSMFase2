@@ -58,7 +58,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView11"
+            android:id="@+id/hamburger_img"
             android:layout_width="325dp"
             android:layout_height="160dp"
             android:layout_marginTop="20dp"
@@ -68,23 +68,23 @@
             app:srcCompat="@mipmap/hb" />
 
         <ImageView
-            android:id="@+id/imageView12"
+            android:id="@+id/pizzasView1"
             android:layout_width="324dp"
             android:layout_height="156dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="40dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView11"
+            app:layout_constraintTop_toBottomOf="@+id/hamburger_img"
             app:srcCompat="@mipmap/pizzas" />
 
         <ImageView
-            android:id="@+id/imageView13"
+            android:id="@+id/postresView"
             android:layout_width="319dp"
             android:layout_height="161dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="44dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView12"
+            app:layout_constraintTop_toBottomOf="@+id/pizzasView1"
             app:srcCompat="@mipmap/postres" />
 
         <ImageView
