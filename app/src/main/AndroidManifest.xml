@@ -20,13 +20,13 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".DashboardActivity" />
-        <activity android:name=".ShopActivity"></activity>
-        <activity android:name=".HamburguesasActivity"></activity>
-        <activity android:name=".PizzaActivity"></activity>
-        <activity android:name=".PostresActivity"></activity>
-        <activity android:name=".Productos.ActividadProducto"></activity>
-        <activity android:name=".Productos.AgregarProducto"></activity>
-
+        <activity android:name=".ShopActivity" />
+        <activity android:name=".HamburguesasActivity" />
+        <activity android:name=".PizzaActivity" />
+        <activity android:name=".PostresActivity" />
+        <activity android:name=".PerfilActivity" />
+        <activity android:name=".Productos.ActividadProducto" />
+        <activity android:name=".Productos.AgregarProducto" />
     </application>
 
 </manifest>
