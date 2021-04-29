@@ -24,6 +24,8 @@
         <activity android:name=".HamburguesasActivity"></activity>
         <activity android:name=".PizzaActivity"></activity>
         <activity android:name=".PostresActivity"></activity>
+        <activity android:name=".Productos.ActividadProducto"></activity>
+        <activity android:name=".Productos.AgregarProducto"></activity>
 
     </application>
 
