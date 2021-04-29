@@ -62,11 +62,11 @@ public class AgregarProducto extends AppCompatActivity {
         Producto producto = new Producto(id,nombre,categoria,descripcion,stock,precio,img);
 
         if (accion.equals("a")) { //Agregar usando push()
-            ActividadProducto.refPersonas.push().setValue(producto);
+            ActividadProducto.refProductos.push().setValue(producto);
         }
         else // Editar usando setValue
         {
-            ActividadProducto.refPersonas.child(key).setValue(producto);
+            ActividadProducto.refProductos.child(key).setValue(producto);
         }
         finish();
     }

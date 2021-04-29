@@ -26,10 +26,10 @@ import sv.edu.udb.guia07app.R;
 
 public class ActividadProducto extends AppCompatActivity {
     public static FirebaseDatabase database = FirebaseDatabase.getInstance();
-    public static DatabaseReference refPersonas = database.getReference("personas");
+    public static DatabaseReference refProductos = database.getReference("productos");
 
     // Ordenamiento
-    Query consultaOrdenada = refPersonas.orderByChild("nombre");
+    Query consultaOrdenada = refProductos.orderByChild("nombre");
 
     List<Producto> productos;
     ListView listaProductos;
@@ -81,7 +81,7 @@ public class ActividadProducto extends AppCompatActivity {
 
                     ad.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            sv.edu.udb.guia07app.Productos.ActividadProducto.refPersonas
+                            sv.edu.udb.guia07app.Productos.ActividadProducto.refProductos
                                     .child(productos.get(position).getKey()).removeValue();
 
                             Toast.makeText(sv.edu.udb.guia07app.Productos.ActividadProducto.this,
