@@ -19,6 +19,8 @@ import android.widget.ImageView;
 
 import com.google.android.material.navigation.NavigationView;
 
+import sv.edu.udb.guia07app.Productos.ActividadProducto;
+
 public class DashboardActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
@@ -41,6 +43,16 @@ public class DashboardActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(DashboardActivity.this, DashboardActivity.class);
                         startActivity(intent);
+                        break;
+
+                    case R.id.nav_producto:
+                        Intent i = new Intent(DashboardActivity.this, ActividadProducto.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.nav_perfil:
+                        Intent i2 = new Intent(DashboardActivity.this, PerfilActivity.class);
+                        startActivity(i2);
                         break;
 
 //Paste your privacy policy link

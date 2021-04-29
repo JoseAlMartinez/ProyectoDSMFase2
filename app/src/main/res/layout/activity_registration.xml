@@ -50,7 +50,7 @@
         android:layout_marginEnd="52dp"
         android:backgroundTint="#FFFFFF"
         android:foregroundTint="#FFFFFF"
-        android:hint="Contraseña"
+        android:hint="Contraseña (6 digitos)"
         android:inputType="textPassword"
         android:shadowColor="#FFFFFF"
         android:textColor="#FFFFFF"
