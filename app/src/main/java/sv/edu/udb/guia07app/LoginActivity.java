@@ -2,6 +2,7 @@ package sv.edu.udb.guia07app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -34,7 +35,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private GoogleSignInClient mGoogleSignInClient;
-    private  final static int RC_SIGN_IN = 12341;
     private FirebaseAuth mAuth;
 
     @Override
@@ -42,8 +42,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
 
         FirebaseUser user = mAuth.getCurrentUser();
-        if (user!=null){
-            Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+        if (user != null) {
+            Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
             startActivity(intent);
         }
     }
@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-    createRequest();
+        createRequest();
 
         findViewById(R.id.login_g).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,9 +87,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
+        startActivityForResult(signInIntent, 100);
 
     }
+
 
     //Ingresando con correo y pass
     private void loginUserAccount() {
@@ -118,8 +119,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
                             startActivity(intent);
-                        }
-                        else {
+                        } else {
                             Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
                         }
@@ -133,7 +133,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode == 100) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 // Google Sign In was successful, authenticate with Firebase
@@ -158,17 +158,12 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
                             startActivity(intent);
-
-
+                            Toast.makeText(LoginActivity.this, "Login con google exitoso", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(LoginActivity.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
-
-
                         }
-
-
                         // ...
                     }
                 });

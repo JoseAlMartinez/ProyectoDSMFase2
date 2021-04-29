@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/iconoapp"
         android:supportsRtl="true"
         android:theme="@style/Theme.Guia07App">
+        <activity android:name=".PerfilActivity"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,9 +23,9 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".DashboardActivity" />
-        <activity android:name=".ShopActivity"></activity>
-        <activity android:name=".Productos.ActividadProducto"></activity>
-        <activity android:name=".Productos.AgregarProducto"></activity>
+        <activity android:name=".ShopActivity" />
+        <activity android:name=".Productos.ActividadProducto" />
+        <activity android:name=".Productos.AgregarProducto" />
     </application>
 
 </manifest>

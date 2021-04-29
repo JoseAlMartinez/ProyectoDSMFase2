@@ -48,6 +48,11 @@ public class DashboardActivity extends AppCompatActivity {
                         startActivity(i);
                         break;
 
+                    case R.id.nav_perfil:
+                        Intent i2 = new Intent(DashboardActivity.this, PerfilActivity.class);
+                        startActivity(i2);
+                        break;
+
 //Paste your privacy policy link
 
 //                    case  R.id.nav_Policy:{
