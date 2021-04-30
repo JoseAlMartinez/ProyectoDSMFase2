@@ -1,9 +1,9 @@
-##UNIVERSIDAD DON BOSCO
-#####Escuela de computación
-#####Segunda Fase Proyecto
-#####Desarrollo de Software para Móviles G02T0
+## UNIVERSIDAD DON BOSCO
+##### Escuela de computación
+##### Segunda Fase Proyecto
+##### Desarrollo de Software para Móviles G02T0
 
-####**Presentado por**
+####** Presentado por **
 
 1. #####Oscar Alejandro Barrios Menéndez - BM152200 - G02T
 2. #####Jairo José Machuca Pérez - MP161604 - G02T
