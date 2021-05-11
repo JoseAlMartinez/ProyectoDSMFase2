@@ -55,15 +55,11 @@ public class DashboardActivity extends AppCompatActivity {
                         startActivity(i2);
                         break;
 
-//Paste your privacy policy link
+                    case R.id.nav_carrito:
+                        Intent i3 = new Intent(DashboardActivity.this, ShopActivity.class);
+                        startActivity(i3);
+                        break;
 
-//                    case  R.id.nav_Policy:{
-//
-//                        Intent browserIntent  = new Intent(Intent.ACTION_VIEW , Uri.parse(""));
-//                        startActivity(browserIntent);
-//
-//                    }
-                    //       break;
                     case  R.id.nav_pedidos:{
 
                         Intent intent2 = new Intent(DashboardActivity.this, DashboardActivity.class);

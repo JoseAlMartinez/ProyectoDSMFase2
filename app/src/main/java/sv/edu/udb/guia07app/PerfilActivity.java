@@ -106,8 +106,6 @@ public class PerfilActivity extends AppCompatActivity {
 
         googleSignInClient = GoogleSignIn.getClient(PerfilActivity.this
                 , GoogleSignInOptions.DEFAULT_SIGN_IN);
-        mAuth = FirebaseAuth.getInstance();
-
         //Iniciamos la auth de firebase
         mAuth = FirebaseAuth.getInstance();
         //Iniciamos firebase usuario

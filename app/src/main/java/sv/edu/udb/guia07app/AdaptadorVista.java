@@ -25,7 +25,7 @@ public class AdaptadorVista extends ArrayAdapter<Producto> {
     private Activity context;
 
     public AdaptadorVista(@NonNull Activity context, @NonNull List<Producto> productos) {
-        super(context, R.layout.producto_layout, productos);
+        super(context, R.layout.activity_adaptador_vista, productos);
         this.context = context;
         this.productos = productos;
     }
@@ -38,7 +38,7 @@ public class AdaptadorVista extends ArrayAdapter<Producto> {
         LayoutInflater layoutInflater = context.getLayoutInflater();
         View rowview=null;
         if (view == null)
-            rowview = layoutInflater.inflate(R.layout.producto_layout,null);
+            rowview = layoutInflater.inflate(R.layout.activity_adaptador_vista,null);
         else rowview = view;
 
         //TextView tvId = rowview.findViewById(R.id.tvId);

@@ -6,6 +6,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -27,6 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import sv.edu.udb.guia07app.Modelo.Carrito;
 import sv.edu.udb.guia07app.Modelo.Producto;
 import sv.edu.udb.guia07app.Productos.ActividadProducto;
 import sv.edu.udb.guia07app.Productos.AdaptadorProducto;
@@ -37,12 +43,15 @@ public class PostresActivity extends AppCompatActivity {
 
     public static FirebaseDatabase database = FirebaseDatabase.getInstance();
     public static DatabaseReference refProductos = database.getReference("productos");
+    public static DatabaseReference refCarrito = database.getReference("carrito");
 
     // Ordenamiento
     Query consultaOrdenada = refProductos.orderByChild("categoria").equalTo("Postres");
 
     List<Producto> productos;
     ListView listaProductos;
+    FirebaseAuth mAuth;
+    GoogleSignInClient googleSignInClient;
 
     //Declarando botones de navegacion
     Button btn_shop;
@@ -56,16 +65,53 @@ public class PostresActivity extends AppCompatActivity {
     }
 
     private void inicializar() {
-        FloatingActionButton fab_agregar= findViewById(R.id.btn_agregar);
         listaProductos = findViewById(R.id.ListaPostres);
-
-        // Cuando el usuario haga clic en la lista (para editar registro)
-
-
-        // Cuando el usuario hace un LongClic (clic sin soltar elemento por mas de 2 segundos)
-        // Es por que el usuario quiere eliminar el registro
-
         productos = new ArrayList<>();
+
+        googleSignInClient = GoogleSignIn.getClient(PostresActivity.this
+                , GoogleSignInOptions.DEFAULT_SIGN_IN);
+        //Iniciamos la auth de firebase
+        mAuth = FirebaseAuth.getInstance();
+        //Iniciamos firebase usuario
+        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+
+        // Cuando el usuario haga clic en la lista (para agregar al carrito)
+        listaProductos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                // Preparando cuadro de dialogo para preguntar al usuario
+                // Si esta seguro de eliminar o no el registro
+                AlertDialog.Builder ad = new AlertDialog.Builder(PostresActivity.this);
+                ad.setMessage("Desea agregar este producto al carrito")
+                        .setTitle("Confirmación");
+
+                ad.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        String nombre = productos.get(i).getNombre();
+                        Double precio = productos.get(i).getPrecio();
+                        String correo = firebaseUser.getEmail();
+                        String img = productos.get(i).getpImg();
+                        boolean actividad = true;
+
+                        Carrito carrito = new Carrito(nombre, precio, img, correo, actividad);
+                        PostresActivity.refCarrito.push().setValue(carrito);
+
+                        Toast.makeText(PostresActivity.this,
+                                "Agregado al carrito!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                ad.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Toast.makeText(PostresActivity.this,
+                                "No se agrego al carrito!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                ad.show();
+            }
+        });
 
         // Cambiarlo refProductos a consultaOrdenada para ordenar lista
         consultaOrdenada.addValueEventListener(new ValueEventListener() {
