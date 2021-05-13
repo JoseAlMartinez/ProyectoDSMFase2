@@ -1,12 +1,16 @@
 package sv.edu.udb.guia07app;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,6 +47,7 @@ public class ShopActivity extends AppCompatActivity {
     Button btn_shop;
     ProgressDialog progressDialog;
     TextView txTotal;
+    double totalPrice;
 
 
     @Override
@@ -60,8 +65,12 @@ public class ShopActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getBaseContext(), DashboardActivity.class);
-
-                startActivity(i);
+                if(totalPrice < 0.1){
+                    Toast.makeText(ShopActivity.this,
+                            "No agrego nada al carrito", Toast.LENGTH_SHORT).show();
+                }else{
+                    startActivity(i);
+                }
             }
         });
     }
@@ -97,13 +106,46 @@ public class ShopActivity extends AppCompatActivity {
                 AdaptadorShop adapter = new AdaptadorShop(ShopActivity.this,
                         carritos);
                 listaCarrito.setAdapter(adapter);
-
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+
+        listaCarrito.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long l) {
+
+                // Preparando cuadro de dialogo para preguntar al usuario
+                // Si esta seguro de eliminar o no el registro
+                AlertDialog.Builder ad = new AlertDialog.Builder(ShopActivity.this);
+                ad.setMessage("Está seguro de eliminar del carrito?")
+                        .setTitle("Confirmación");
+
+                ad.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        ShopActivity.refCarrito
+                                .child(carritos.get(position).getKey()).removeValue();
+
+                        Toast.makeText(ShopActivity.this,
+                                "Registro borrado!", Toast.LENGTH_SHORT).show();
+                        finish();
+                        startActivity(getIntent());
+                    }
+                });
+                ad.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Toast.makeText(ShopActivity.this,
+                                "Operación de borrado cancelada!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                ad.show();
+                return true;
+            }
+        });
+
     }
 
     private void totalPrecio() {
@@ -117,10 +159,11 @@ public class ShopActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 double count = 0;
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    double rating = ds.child("precio").getValue(Double.class);
-                    count = count + rating;
+                    double precio = ds.child("precio").getValue(Double.class);
+                    count = count + precio;
                 }
                 txTotal.setText("$" + count);
+                totalPrice = count;
             }
 
             @Override

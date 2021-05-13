@@ -10,6 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import sv.edu.udb.guia07app.Productos.ActividadProducto;
 
@@ -25,18 +28,22 @@ public class DashboardActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
-    NavigationView navigationView;
+    NavigationView navigationView, navigationViewAdmin;
     Button btn_shop;
     ImageView ima1,ima2,ima3;
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         setUpToolbar();
+        //Para el mostrar el mantenimiento de productos dependiendo del admin
         navigationView = (NavigationView) findViewById(R.id.navigation_menu);
+        validarAdmin();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
                 switch (menuItem.getItemId())
                 {
                     case  R.id.nav_home:
@@ -110,6 +117,23 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void validarAdmin(){
+        //Iniciamos la auth de firebase
+        mAuth = FirebaseAuth.getInstance();
+        //Iniciamos firebase usuario
+        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+
+        if(firebaseUser.getEmail().equals("reyalexmendoza@gmail.com")
+        || firebaseUser.getEmail().equals("oscarbarrios17@gmail.com")
+        || firebaseUser.getEmail().equals("jai.mac.99@gmail.com")){
+            navigationView.getMenu().findItem(R.id.nav_producto).setVisible(true);
+        }else {
+            Menu menuNav=navigationView.getMenu();
+            MenuItem nav_item2 = menuNav.findItem(R.id.nav_producto);
+            nav_item2.setVisible(false);
+        }
     }
 
     private void initializeViews() {

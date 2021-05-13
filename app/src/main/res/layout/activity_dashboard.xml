@@ -39,9 +39,6 @@
                     app:subtitleTextColor="#0A0A0A"
                     app:titleTextColor="#111111" />
 
-                <!--    Your code here -->
-
-
             </LinearLayout>
         </ScrollView>
 
@@ -107,4 +104,6 @@
         app:menu="@menu/drawer_menu">
 
     </com.google.android.material.navigation.NavigationView>
+
+
 </androidx.drawerlayout.widget.DrawerLayout>
