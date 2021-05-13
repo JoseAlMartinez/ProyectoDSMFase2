@@ -2,8 +2,6 @@ package sv.edu.udb.guia07app.Modelo;
 
 public class Carrito {
 
-    //UTILIZAR EL ADAPTADOR DE "ADAPTADOR VISTA" CON EL BOTON QUE TENIA, PARA EL ADAPTADOR DEL CARRITO
-
     String key;
     private String nombre_producto;
     private double precio;

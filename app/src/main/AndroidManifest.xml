@@ -27,8 +27,8 @@
         <activity android:name=".PerfilActivity" />
         <activity android:name=".Productos.ActividadProducto" />
         <activity android:name=".Productos.AgregarProducto" />
-        <activity android:name="DireccionActivity"></activity>
-        <activity android:name=".AddireccionActivity"></activity>
+        <activity android:name=".Direccion.ActividadDireccion" />
+        <activity android:name=".Direccion.AgregarDireccion" />
     </application>
 
 </manifest>

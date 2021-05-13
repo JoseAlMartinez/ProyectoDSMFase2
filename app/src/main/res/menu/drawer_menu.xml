@@ -15,7 +15,10 @@
             android:icon="@drawable/ic_baseline_shopping_cart_24"
             android:title="Carrito">
         </item>
-
+        <item android:id="@+id/nav_direccion"
+            android:icon="@drawable/ic_baseline_menu_book_24"
+            android:title="Direcciones">
+        </item>
         <item android:id="@+id/nav_producto"
             android:icon="@drawable/ic_baseline_menu_book_24"
             android:title="Mantenimiento Productos">

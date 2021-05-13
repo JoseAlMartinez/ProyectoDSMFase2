@@ -22,6 +22,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import sv.edu.udb.guia07app.Direccion.ActividadDireccion;
 import sv.edu.udb.guia07app.Productos.ActividadProducto;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -55,6 +56,11 @@ public class DashboardActivity extends AppCompatActivity {
                     case R.id.nav_producto:
                         Intent i = new Intent(DashboardActivity.this, ActividadProducto.class);
                         startActivity(i);
+                        break;
+
+                    case R.id.nav_direccion:
+                        Intent i4 = new Intent(DashboardActivity.this, ActividadDireccion.class);
+                        startActivity(i4);
                         break;
 
                     case R.id.nav_perfil:
