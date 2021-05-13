@@ -41,7 +41,7 @@ public class PerfilActivity extends AppCompatActivity {
     ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navigationView;
     Button btn_shop;
-
+        Button btn_direc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,11 +75,13 @@ public class PerfilActivity extends AppCompatActivity {
                         startActivity(i2);
                         break;
 
+//<<<<<<< Updated upstream
                     case R.id.nav_carrito:
                         Intent i3 = new Intent(PerfilActivity.this, ShopActivity.class);
                         startActivity(i3);
                         break;
 
+//>>>>>>> Stashed changes
                     case  R.id.nav_pedidos:{
 
                         Intent intent2 = new Intent(PerfilActivity.this, DashboardActivity.class);
@@ -102,6 +104,14 @@ public class PerfilActivity extends AppCompatActivity {
             }
         });
 
+        //Ingreso a la direccion del usuario
+        btn_direc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PerfilActivity.this, DireccionActivity.class);
+                startActivity(intent);
+            }
+        });
 
         googleSignInClient = GoogleSignIn.getClient(PerfilActivity.this
                 , GoogleSignInOptions.DEFAULT_SIGN_IN);
@@ -109,6 +119,7 @@ public class PerfilActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         //Iniciamos firebase usuario
         FirebaseUser firebaseUser = mAuth.getCurrentUser();
+
         if (firebaseUser != null) {
             //Cuando el usuario de firebase es diferente de null
             //colocamos la img
@@ -151,9 +162,15 @@ public class PerfilActivity extends AppCompatActivity {
                 });
             }
         });
+
+
     }
 
+
+
     private void initializeViews() {
+
+        btn_direc = findViewById(R.id.btn_direcionp);
         btn_shop = findViewById(R.id.btn_shop);
     }
 

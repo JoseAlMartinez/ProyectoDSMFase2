@@ -56,6 +56,7 @@ public class AdaptadorVista extends ArrayAdapter<Producto> {
         //tvStock.setText("Stock : " + productos.get(position).getEnStock());
         tvPrecio.setText("Precio : $" + productos.get(position).getPrecio());
         Glide.with(img.getContext()).load(productos.get(position).getpImg()).into(img);
+        
 
         return rowview;
     }

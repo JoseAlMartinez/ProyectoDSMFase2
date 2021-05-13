@@ -3,6 +3,9 @@
     <string name="bienvenido">Bienvenido a RapidFood SV !!</string>
     <string name="todo">TODO</string>
     <string name="icon">icono</string>
+    <string name="direccionh">Direccion</string>
+    <string name="direccionhouse">Agregar direccion</string>
+    <string name="direccionCompleta">Ingresa la direccion completa en el siguiente campo</string>
     <string name="title_activity_home">activity_home</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

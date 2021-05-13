@@ -113,13 +113,14 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
+                        if (task.isSuccessful() ) {
+                            Toast.makeText(getApplicationContext(), "Hola admin!!", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
 
                             Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
                             startActivity(intent);
-                        } else {
+                        }
+                        else {
                             Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
                         }
