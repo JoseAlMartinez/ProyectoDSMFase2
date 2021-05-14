@@ -64,7 +64,7 @@ public class ShopActivity extends AppCompatActivity {
         btn_shop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getBaseContext(), DashboardActivity.class);
+                Intent i = new Intent(getBaseContext(), SeleccionDireccionActivity.class);
                 if(totalPrice < 0.1){
                     Toast.makeText(ShopActivity.this,
                             "No agrego nada al carrito", Toast.LENGTH_SHORT).show();

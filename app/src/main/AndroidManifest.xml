@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/iconoapp"
         android:supportsRtl="true"
         android:theme="@style/Theme.Guia07App">
+        <activity android:name=".SeleccionDireccionActivity"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

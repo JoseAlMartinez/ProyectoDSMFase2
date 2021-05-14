@@ -3,22 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_agregar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="26dp"
-        android:layout_marginEnd="26dp"
-        android:clickable="true"
-        app:srcCompat="@android:drawable/ic_input_add"
-        app:fabSize="normal" />
 
     <ListView
         android:id="@+id/ListaDireccion"
         android:layout_width="match_parent"
-        android:layout_height="562dp"
+        android:layout_height="331dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="97dp"
@@ -26,16 +15,23 @@
         android:scrollbars="horizontal|vertical" />
 
     <TextView
-        android:id="@+id/txDirecc"
+        android:id="@+id/tvDirecc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="TextView"
+        android:text="@string/textview"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold" />
 
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="450dp"
+        android:text="@string/cancelar"
+        android:textStyle="bold" />
+
 
 </RelativeLayout>
-
-

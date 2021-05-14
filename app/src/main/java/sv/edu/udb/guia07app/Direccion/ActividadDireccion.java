@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,7 +37,7 @@ public class ActividadDireccion extends AppCompatActivity {
     public static DatabaseReference refDireccion = database.getReference("direccion");
 
     // Ordenamiento
-
+    TextView txDireccion;
     List<Direccion> direcciones;
     ListView listaDireccion;
     FirebaseAuth mAuth;
@@ -46,9 +47,8 @@ public class ActividadDireccion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_direcciones);
-
+        txDireccion = (TextView)findViewById(R.id.txDirecc);
         inicializar();
-
     }
 
     private void inicializar() {
@@ -58,6 +58,12 @@ public class ActividadDireccion extends AppCompatActivity {
         //Iniciamos firebase usuario
         FirebaseUser firebaseUser = mAuth.getCurrentUser();
         Query consulta = refDireccion.orderByChild("correo").equalTo(firebaseUser.getEmail());
+
+        if(consulta == null){
+            txDireccion.setText("No hay direcciones registradas");
+        }else{
+            txDireccion.setText("Direcciones agregadas");
+        }
 
         FloatingActionButton fab_agregar= findViewById(R.id.btn_agregar);
         listaDireccion = findViewById(R.id.ListaDireccion);
