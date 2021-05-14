@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,16 +36,24 @@ public class SeleccionDireccionActivity extends AppCompatActivity {
     Button btnCancel;
     public static FirebaseDatabase database = FirebaseDatabase.getInstance();
     public static DatabaseReference refDireccion = database.getReference("direccion");
+    DatabaseReference ref;
     FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleccion_direccion);
-
-        txDireccion = (TextView)findViewById(R.id.txDirecc);
+        listaDireccion = findViewById(R.id.ListaDireccion);
+        txDireccion = (TextView)findViewById(R.id.tvDirecc);
         btnCancel = (Button)findViewById(R.id.btnCancelar);
+
+        /*ref = FirebaseDatabase.getInstance().getReference();
+
+        ref.child("carrito").child()*/
+
+
         inicializar();
+
     }
 
     private void inicializar() {
@@ -74,22 +83,33 @@ public class SeleccionDireccionActivity extends AppCompatActivity {
                         direcciones);
                 listaDireccion.setAdapter(adapter);
 
+                if(adapter.getCount() == 0){
+                    txDireccion.setText("No tiene ninguna direccion registrada");
+                }else {
+                    txDireccion.setText("Selecciona una direccion para el envio");
+                }
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
 
-        // Cuando el usuario haga clic en la lista (para editar registro)
-        listaDireccion.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getBaseContext(), AgregarDireccion.class);
-                String direc = direcciones.get(i).getDireccion();
+        // Cuando el usuario haga clic en la lista
+        try {
+            listaDireccion.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent intent = new Intent(getBaseContext(), AgregarDireccion.class);
+                    //String direc = direcciones.get(i).getDireccion();
 
-                startActivity(intent);
-            }
-        });
+                    startActivity(intent);
+                }
+            });
+        }catch (Exception e){
+            Toast.makeText(SeleccionDireccionActivity.this,
+                    "No tiene direcciones registradas!", Toast.LENGTH_SHORT).show();
+        }
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override

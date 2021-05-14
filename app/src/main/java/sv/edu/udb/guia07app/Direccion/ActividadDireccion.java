@@ -59,12 +59,6 @@ public class ActividadDireccion extends AppCompatActivity {
         FirebaseUser firebaseUser = mAuth.getCurrentUser();
         Query consulta = refDireccion.orderByChild("correo").equalTo(firebaseUser.getEmail());
 
-        if(consulta == null){
-            txDireccion.setText("No hay direcciones registradas");
-        }else{
-            txDireccion.setText("Direcciones agregadas");
-        }
-
         FloatingActionButton fab_agregar= findViewById(R.id.btn_agregar);
         listaDireccion = findViewById(R.id.ListaDireccion);
 
@@ -102,6 +96,8 @@ public class ActividadDireccion extends AppCompatActivity {
 
                             Toast.makeText(ActividadDireccion.this,
                                     "Registro borrado!", Toast.LENGTH_SHORT).show();
+                            finish();
+                            startActivity(getIntent());
                         }
                     });
                     ad.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -149,6 +145,12 @@ public class ActividadDireccion extends AppCompatActivity {
                 AdaptadorDireccion adapter = new AdaptadorDireccion(ActividadDireccion.this,
                         direcciones);
                 listaDireccion.setAdapter(adapter);
+
+                if(adapter.getCount() == 0){
+                    txDireccion.setText("No tiene ninguna direccion registrada");
+                }else {
+                    txDireccion.setText("Direcciones registradas");
+                }
 
             }
             @Override
