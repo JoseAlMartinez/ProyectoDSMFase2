@@ -47,7 +47,7 @@ public class SeleccionDireccionActivity extends AppCompatActivity {
         txDireccion = (TextView)findViewById(R.id.tvDirecc);
         btnCancel = (Button)findViewById(R.id.btnCancelar);
 
-        /*ref = FirebaseDatabase.getInstance().getReference();
+       /* ref = FirebaseDatabase.getInstance().getReference();
 
         ref.child("carrito").child()*/
 
@@ -102,7 +102,8 @@ public class SeleccionDireccionActivity extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Intent intent = new Intent(getBaseContext(), AgregarDireccion.class);
                     //String direc = direcciones.get(i).getDireccion();
-
+                    Toast.makeText(SeleccionDireccionActivity.this,
+                            "Se realizo la compra correctamente", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }
             });
