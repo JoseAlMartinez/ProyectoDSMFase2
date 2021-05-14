@@ -100,7 +100,7 @@ public class SeleccionDireccionActivity extends AppCompatActivity {
             listaDireccion.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    Intent intent = new Intent(getBaseContext(), AgregarDireccion.class);
+                    Intent intent = new Intent(getBaseContext(), DashboardActivity.class);
                     //String direc = direcciones.get(i).getDireccion();
                     Toast.makeText(SeleccionDireccionActivity.this,
                             "Se realizo la compra correctamente", Toast.LENGTH_SHORT).show();
