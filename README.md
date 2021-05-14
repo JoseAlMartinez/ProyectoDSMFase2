@@ -13,6 +13,16 @@
 #### **Link Los diseños Mock Ups**
 ##### https://xd.adobe.com/view/fdf44a48-5121-4505-978c-9c76d3a9a072-a8a7/?fullscreen&hints=off
 
-#### **Link de un video con el funcionamiento**
+#### **Link de Manual Técnico**
 
-##### https://drive.google.com/file/d/184AK-ITO8z3IBK7Noy7OhFXgmUW-RpOK/view?usp=sharing
+##### https://drive.google.com/file/d/1e9zimFi2k3ETvmOYUdxS-mKRw8y_UpJd/view?usp=drivesdk
+
+#### **Link de Manual De Usuario**
+
+##### https://drive.google.com/file/d/1HF-T_cDNkI855HfKTbxF5sHKaBJFYjx2/view?usp=sharing
+
+#### **Link de TRELLO**
+
+##### https://trello.com/invite/b/AbqFkcQJ/30fcabe18b834b4d6236e450e771f267/proyecto-dsm
+
+
