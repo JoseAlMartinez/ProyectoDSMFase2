@@ -95,7 +95,7 @@ public class HamburguesasActivity extends AppCompatActivity {
                         String img = productos.get(i).getpImg();
                         boolean actividad = true;
 
-                        Carrito carrito = new Carrito(nombre, precio, img, correo, actividad);
+                        Carrito carrito = new Carrito(nombre, precio, img, correo, actividad, null, null);
                         HamburguesasActivity.refCarrito.push().setValue(carrito);
 
                         Toast.makeText(HamburguesasActivity.this,

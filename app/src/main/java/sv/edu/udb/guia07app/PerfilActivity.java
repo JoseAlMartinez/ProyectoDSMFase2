@@ -87,7 +87,7 @@ public class PerfilActivity extends AppCompatActivity {
 
                     case R.id.nav_pedidos: {
 
-                        Intent intent2 = new Intent(PerfilActivity.this, DashboardActivity.class);
+                        Intent intent2 = new Intent(PerfilActivity.this, HistorialActivity.class);
                         startActivity(intent2);
                         break;
                     }

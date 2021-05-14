@@ -75,7 +75,7 @@ public class DashboardActivity extends AppCompatActivity {
 
                     case  R.id.nav_pedidos:{
 
-                        Intent intent2 = new Intent(DashboardActivity.this, DashboardActivity.class);
+                        Intent intent2 = new Intent(DashboardActivity.this, HistorialActivity.class);
                         startActivity(intent2);
                         break;
                     }

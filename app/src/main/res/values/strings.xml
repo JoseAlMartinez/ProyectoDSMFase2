@@ -27,4 +27,6 @@
     <string name="agregar">Agregar al carrito</string>
     <string name="textview">TextView</string>
     <string name="cancelar">Cancelar</string>
+    <string name="regresar">Regresar</string>
+    <string name="historial_de_compras">Historial de compras</string>
 </resources>

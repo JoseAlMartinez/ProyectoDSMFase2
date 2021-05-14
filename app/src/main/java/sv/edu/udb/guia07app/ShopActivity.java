@@ -100,12 +100,15 @@ public class ShopActivity extends AppCompatActivity {
                 for (DataSnapshot dato : dataSnapshot.getChildren()) {
                     Carrito carrito = dato.getValue(Carrito.class);
                     carrito.setKey(dato.getKey());
-                    carritos.add(carrito);
-                }
 
-                AdaptadorShop adapter = new AdaptadorShop(ShopActivity.this,
-                        carritos);
-                listaCarrito.setAdapter(adapter);
+                    if(carrito.isActividad()){
+                        carritos.add(carrito);
+                        AdaptadorShop adapter = new AdaptadorShop(ShopActivity.this,
+                                carritos);
+                        listaCarrito.setAdapter(adapter);
+                    }else{
+                    }
+                }
             }
 
             @Override
@@ -160,10 +163,15 @@ public class ShopActivity extends AppCompatActivity {
                 double count = 0;
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     double precio = ds.child("precio").getValue(Double.class);
-                    count = count + precio;
+                    if(ds.child("actividad").getValue(Boolean.class) == true){
+                        count = count + precio;
+                        txTotal.setText("$" + count);
+                        totalPrice = count;
+                    }else{
+                        txTotal.setText("$0.0" );
+                        totalPrice = 0.0;
+                    }
                 }
-                txTotal.setText("$" + count);
-                totalPrice = count;
             }
 
             @Override

@@ -8,16 +8,20 @@ public class Carrito {
     private String pImg;
     private String correo_usuario;
     private boolean actividad;
+    private String direccion_envio;
+    private String fecha;
 
     public Carrito() {
     }
 
-    public Carrito(String nombre_producto, double precio, String pImg, String correo_usuario, boolean actividad) {
+    public Carrito(String nombre_producto, double precio, String pImg, String correo_usuario, boolean actividad, String direccion_envio, String fecha) {
         this.nombre_producto = nombre_producto;
         this.precio = precio;
         this.pImg = pImg;
         this.correo_usuario = correo_usuario;
         this.actividad = actividad;
+        this.direccion_envio = direccion_envio;
+        this.fecha = fecha;
     }
 
     public String getKey() {
@@ -66,5 +70,21 @@ public class Carrito {
 
     public void setActividad(boolean actividad) {
         this.actividad = actividad;
+    }
+
+    public String getDireccion_envio() {
+        return direccion_envio;
+    }
+
+    public void setDireccion_envio(String direccion_envio) {
+        this.direccion_envio = direccion_envio;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 }
