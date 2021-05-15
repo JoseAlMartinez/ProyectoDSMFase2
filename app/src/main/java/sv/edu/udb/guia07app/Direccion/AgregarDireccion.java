@@ -9,15 +9,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import sv.edu.udb.guia07app.Modelo.Direccion;
 import sv.edu.udb.guia07app.Modelo.Producto;
 import sv.edu.udb.guia07app.Productos.ActividadProducto;
+import sv.edu.udb.guia07app.Productos.Validaciones;
 import sv.edu.udb.guia07app.R;
 
 public class AgregarDireccion extends AppCompatActivity {
     EditText edtId, edtNombre, edtDireccion;
     String key="",id="",nombre_direccion="",direccion="",correo="",accion="";
+    Validaciones validar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_direccion);
+        validar = new Validaciones();
         inicializar();
     }
 
@@ -41,17 +44,25 @@ public class AgregarDireccion extends AppCompatActivity {
     public void guardar(View v){
         String nombre = edtNombre.getText().toString();
         String direccion = edtDireccion.getText().toString();
-        // Se forma objeto producto
-        Direccion direcciones = new Direccion(nombre,direccion,correo);
 
-        if (accion.equals("a")) { //Agregar usando push()
-            ActividadDireccion.refDireccion.push().setValue(direcciones);
+        if (!validar.Vacio(edtNombre) && !validar.Vacio(edtDireccion)){
+            if(!validar.soloLetras(nombre)){
+                edtNombre.setError("Solo letras");
+                edtNombre.requestFocus();
+            }else{
+                // Se forma objeto producto
+                Direccion direcciones = new Direccion(nombre,direccion,correo);
+
+                if (accion.equals("a")) { //Agregar usando push()
+                    ActividadDireccion.refDireccion.push().setValue(direcciones);
+                }
+                else // Editar usando setValue
+                {
+                    ActividadDireccion.refDireccion.child(key).setValue(direcciones);
+                }
+                finish();
+            }
         }
-        else // Editar usando setValue
-        {
-            ActividadDireccion.refDireccion.child(key).setValue(direcciones);
-        }
-        finish();
     }
     public void cancelar(View v){
         finish();
